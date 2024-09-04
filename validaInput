@@ -1,0 +1,25 @@
+function validaInput(novoLimiteCliente, countryCurrency) {
+  const inputString = novoLimiteCliente.toString().replace(/[^0-9]/g, '');
+  
+  const userInputNumber = parseFloat(inputString);
+  
+  if (isNaN(userInputNumber)) {
+    return "Inválido"
+  }
+  
+  const formatter = new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: countryCurrency,
+  });
+  const transformedCurrency = formatter.format(userInputNumber);
+  
+  return transformedCurrency;
+}
+
+const novoLimiteCliente = vars.novoLimiteCliente;
+const countryCurrency = 'BRL';
+
+const formattedCurrency = validaInput(novoLimiteCliente, countryCurrency);
+console.log(fomattedCurrency);
+
+return "Válido"
